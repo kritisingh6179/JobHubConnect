@@ -23,24 +23,38 @@
             <link href="{{asset('plugins/datepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
             <link href="{{asset('plugins/datepicker/datepicker3.css')}}" rel="stylesheet" media="screen">
             <style>
-               
+               .float-end{
+                margin:10px 10px;
+               }
                 .navbar {
                     background-color: #90aac6;
                     color:black;
                     padding: 10px;
-                    margin:10px; 
+                    margin:10px;
                 }
-        
-                
+                .navbar a {
+               
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            
+            .nav-item {
+    margin: 0 20px;
+    list-style: none; /* Remove list bullets */
+}
         
                 .navbar-nav .nav-link {
                     color: #007BFF;
+                    list-style: none;
+    padding: 0;
+    display: flex; 
+    justify-content: center;
                 }
                 .content {
             background-color: #fff; /* Background color of the content box */
             padding: 20px; /* Padding around the content */
           /* Border around the content box */
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); Box shadow for a subtle depth effect
+            /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); Box shadow for a subtle depth effect */
         }
             </style>
         </head>
@@ -52,25 +66,23 @@
                 <!-- start header -->
                 @include("client_layout.header")    
                 <!-- end header --> 
-    
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container">
-                      <a class="navbar-brand" href="{{ route('jobindex') }}">jobs</a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('jobindex') }}">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="{{ route('job.create') }}">New  job</a>
-                          </li>
-                        </ul>
+                <section id="inner-headline">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <h2 class="pageTitle">Jobs</h2>
+                            
+                          </div>
                       </div>
-                    </div>
-                  </nav>
+                  </div>
+              </section> 
+             
+            <div class="float-end">
+                <a href="{{ route('job.create') }}" class="btn btn-info">
+                    <i class="fa fa-plus-circle"></i> Create Job Listing
+                </a>
+                <a class="btn btn-info" aria-current="page" href="{{ route('jobindex') }}"><i class="fa fa-arrow-left"></i>Home</a>
+            </div>
     {{-- start-content --}}
     <div class="content">
         @yield('content')

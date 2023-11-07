@@ -159,7 +159,7 @@
           <button class="form-btn">Create account</button>
         </form>
         <p class="sign-up-label">
-          Already have an account?<span class="sign-up-link"><a href="{{url('login')}}">Log in</a></span>
+          Already have an account?<span class="sign-up-link"><a href="{{url('')}}">Log in</a></span>
         </p>
         <div class="buttons-container">
           <div class="apple-login-button">

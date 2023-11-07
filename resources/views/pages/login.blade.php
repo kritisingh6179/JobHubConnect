@@ -17,6 +17,7 @@
   border-radius: 10px;
   box-sizing: border-box;
   padding: 20px 30px;
+  margin:auto 10px;
 }
 
 .title {
@@ -155,7 +156,7 @@
           <button class="form-btn">Log in</button>
         </form>
         <p class="sign-up-label">
-          Don't have an account?<span class="sign-up-link"><a href="{{url('')}}">Sign up</a></span>
+          Don't have an account?<span class="sign-up-link"><a href="{{url('register')}}">Sign up</a></span>
         </p>
         <div class="buttons-container">
           <div class="apple-login-button">

@@ -13,6 +13,7 @@ class JobListingController extends Controller
      */
     public function jobindex()
     {
+         // Retrieve all job listings and order them by the newest first.
         $job = JobListing::orderBy('id', 'desc')->get();
         return view('job-listings.index', compact('job'));
     }
@@ -35,10 +36,11 @@ class JobListingController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the incoming request data.
         $request->validate([
             'title' => 'required'
         ]);
-
+        // Create a new job listing and save it to the database.
         $job = new JobListing();
         $job->title = $request->title;
         $job->description = $request->description;
@@ -46,6 +48,7 @@ class JobListingController extends Controller
         $job->company_name = $request->company_name;
         $job->salary = $request->salary;
         $job->save();
+        // Redirect to the job listing index page.
         return redirect()->route('jobindex');
     }
 
@@ -56,7 +59,9 @@ class JobListingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { $job = JobListing::findOrFail($id);
+    {
+        // Retrieve the job listing with the specified ID.
+         $job = JobListing::findOrFail($id);
         return view('job-listings.show', compact( 'job'));
 
     }
@@ -69,6 +74,7 @@ class JobListingController extends Controller
      */
     public function edit($id)
     {
+          // Retrieve the job listing with the specified ID for editing.
         $job = JobListing::findOrFail($id);
        
         return view('job-listings.edit', compact( 'job'));
@@ -83,16 +89,20 @@ class JobListingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Retrieve the job listing with the specified ID.
         $job = JobListing::findOrFail($id);
+         // Validate the incoming request data.
         $request->validate([
             'title' => 'required'
         ]);
+         // Update job listing details.
         $job->title = $request->title;
         $job->description = $request->description;
         $job->location = $request->location;
         $job->company_name = $request->company_name;
         $job->salary = $request->salary;
         $job->save();
+        // Redirect to the job listing index page.
         return redirect()->route('jobindex');
     }
 
@@ -104,8 +114,10 @@ class JobListingController extends Controller
      */
     public function destroy($id)
     {
+        // Retrieve the job listing with the specified ID and delete it.
         $job = JobListing::findOrFail($id);
         $job->delete();
+        // Redirect to the job listing index page.
         return redirect()->route('jobindex');
     }
 }

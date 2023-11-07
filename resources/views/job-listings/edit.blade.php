@@ -7,7 +7,22 @@
         max-width: 800px;
         margin: 0 auto;
     }
-
+    .form-container {
+  width: 350px;
+  height: 600px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  justify-content: space-between;
+  margin:0 auto;
+  margin top:50px;
+}
+.form{
+    padding:10px;
+    margin:10px;
+}
     label {
         font-weight: bold;
     }
@@ -29,20 +44,19 @@
     button:hover {
         background-color: #0056b3;
     }
+    
 </style>
 
 <div class="container">
     <div class="float-start">
         <h4 class="pb-3">Edit Job listing <span class="badge bg-info">{{ $job->title }}</span></h4>
     </div>
-    <div class="float-end">
-        <a href="{{ route('jobindex') }}" class="btn btn-info">
-            <i class="fa fa-arrow-left"></i> All Job
-        </a>
-    </div>
+    
+   
     <div class="clearfix"></div>
 </div>
-<form action="{{ route('job.update', $job->id) }}" method="POST">
+<div class="form-container">
+<form action="{{ route('job.update', $job->id) }}" method="POST" class="form">
     @csrf
     @method('PUT')
     <label for="title">Title</label>
@@ -67,5 +81,6 @@
         Save
     </button>
 </form>
+</div>
 </div>
 @endsection

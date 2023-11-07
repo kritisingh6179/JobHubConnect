@@ -37,10 +37,11 @@
                                         <i class="fa fa-phone"></i>Tel No. (+001) 123-456-789
                                     </p>
 
-                                                            <p   class="pull-right login">
-                                            <a href="/logout"> <i class="fa fa-lock"></i> Log Out </a>
-                                        </p> 
-                                    
+                                    @if (Auth::check())
+                                    <p class="pull-right login">
+                                        <a href="/logout"> <i class="fa fa-lock"></i> Log Out </a>
+                                    </p>
+                                @endif
 
                                 </div>
                             </div>
@@ -57,7 +58,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="">Website Name</a>
+                                <a class="navbar-brand" href="">JobHubConnect</a>
                             </div>
 
                             <div class="navbar-collapse collapse ">
